@@ -1,0 +1,6 @@
+{
+  "name": "Chroma28 Studio - Production & Studio Rental Beirut",
+  "description": "Premium studio rental, photography studio, podcast studio, white cyclorama, kitchen studio, equipment rental and video production in Antelias, Beirut, Lebanon.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

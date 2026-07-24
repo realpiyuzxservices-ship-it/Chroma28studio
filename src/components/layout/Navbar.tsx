@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenB
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-black/10 transition-all">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-black/10 transition-all shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-4 sm:gap-8">
         
         {/* Left: Chroma28 Logo & Wordmark */}

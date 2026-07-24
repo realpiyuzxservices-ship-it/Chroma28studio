@@ -36,6 +36,18 @@ const variants: Record<string, Variants> = {
     hidden: { opacity: 0, rotateX: 15, y: 20 },
     visible: { opacity: 1, rotateX: 0, y: 0 },
   },
+  foldIn: {
+    hidden: { opacity: 0, rotateX: 18, y: 48, transformPerspective: 1200 },
+    visible: { opacity: 1, rotateX: 0, y: 0, transformPerspective: 1200 },
+  },
+  foldLeft: {
+    hidden: { opacity: 0, rotateY: -16, x: -44, transformPerspective: 1200 },
+    visible: { opacity: 1, rotateY: 0, x: 0, transformPerspective: 1200 },
+  },
+  foldRight: {
+    hidden: { opacity: 0, rotateY: 16, x: 44, transformPerspective: 1200 },
+    visible: { opacity: 1, rotateY: 0, x: 0, transformPerspective: 1200 },
+  },
 };
 
 // ─── Stagger Container ─────────────────────────────────────────────────────────
@@ -83,7 +95,7 @@ interface ScrollRevealProps {
 
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
-  variant = 'slideUp',
+  variant = 'foldIn',
   delay = 0,
   duration = 0.9,
   className,

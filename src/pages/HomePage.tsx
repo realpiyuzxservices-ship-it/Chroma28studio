@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { ArrowRight, Sparkles, MapPin, ChevronRight } from 'lucide-react';
 import { STUDIO_SPACES } from '@/data/spaces';
@@ -45,24 +45,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
   const featuredSpaces = STUDIO_SPACES.slice(0, 6);
 
-  const heroContainerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroContainerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    damping: 32,
-    stiffness: 65,
+  const { scrollY } = useScroll();
+  const smoothY = useSpring(scrollY, {
+    damping: 30,
+    stiffness: 70,
     restDelta: 0.001
   });
 
-  const textScale = useTransform(smoothProgress, [0, 0.8], [1, 0.55]);
-  const textY = useTransform(smoothProgress, [0, 0.8], [0, -80]);
-  const textOpacity = useTransform(smoothProgress, [0, 0.8], [1, 0.95]);
+  const textScale = useTransform(smoothY, [0, 450], [1, 0.55]);
+  const textY = useTransform(smoothY, [0, 450], [0, -75]);
+  const textOpacity = useTransform(smoothY, [0, 450], [1, 0.95]);
 
-  const ctaScale = useTransform(smoothProgress, [0, 0.8], [1, 0.8]);
-  const ctaY = useTransform(smoothProgress, [0, 0.8], [0, -50]);
+  const ctaScale = useTransform(smoothY, [0, 450], [1, 0.8]);
+  const ctaY = useTransform(smoothY, [0, 450], [0, -45]);
 
   const heroImages = [
     heroLoop1,
@@ -86,7 +81,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
       />
 
       {/* ---------- HERO SECTION (Left-aligned scaling typography & full-ratio marquee at bottom) ---------- */}
-      <section ref={heroContainerRef} className="relative w-full bg-white text-black overflow-hidden pt-8 sm:pt-14 pb-0 border-b border-black/15 min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] flex flex-col justify-between">
+      <section className="relative w-full bg-white text-black overflow-hidden pt-8 sm:pt-14 pb-0 border-b border-black/15 min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] flex flex-col justify-between">
         
         {/* Left-Aligned Hero Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-8 text-left flex flex-col items-start justify-center my-auto py-6 sm:py-10 w-full relative z-10">

@@ -53,16 +53,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenB
           </div>
         </button>
 
-        {/* Desktop Navigation: Compact 2x3 Grid Layout */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-12">
-          <nav className="grid grid-cols-3 gap-x-6 gap-y-1 font-sans text-xs sm:text-sm font-normal tracking-wider uppercase">
+        {/* Desktop Navigation: Single Horizontal Row */}
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <nav className="flex items-center gap-5 lg:gap-7 font-sans text-xs sm:text-sm font-normal tracking-wider uppercase">
             {navItems.map((item) => {
               const isActive = currentPath === item.path || (currentPath === '/portfolio' && item.path === '/work') || (currentPath === '/equipment' && item.path === '/equipments');
               return (
                 <button
                   key={item.label}
                   onClick={() => handleNavClick(item.path)}
-                  className={`text-left transition-colors duration-200 py-0.5 cursor-pointer bg-transparent border-0 p-0 uppercase ${
+                  className={`text-left transition-colors duration-200 cursor-pointer bg-transparent border-0 p-0 uppercase whitespace-nowrap ${
                     isActive
                       ? 'text-black font-semibold underline underline-offset-4 decoration-black'
                       : 'text-neutral-700 hover:text-black'
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenB
                 setMobileMenuOpen(false);
               }}
               style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 'normal' }}
-              className="text-xs sm:text-sm font-normal tracking-widest uppercase text-black hover:text-neutral-600 transition-colors cursor-pointer border-b-2 border-black hover:border-neutral-600 pb-0.5 bg-transparent p-0"
+              className="text-xs sm:text-sm font-normal tracking-widest uppercase text-black hover:text-neutral-600 transition-colors cursor-pointer border-b-2 border-black hover:border-neutral-600 pb-0.5 bg-transparent p-0 whitespace-nowrap"
             >
               CONTACT
             </button>

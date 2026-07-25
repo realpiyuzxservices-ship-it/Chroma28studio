@@ -8,7 +8,7 @@ interface EquipmentPageProps {
 
 export const EquipmentPage: React.FC<EquipmentPageProps> = ({ onOpenBooking }) => {
   return (
-    <div className="w-full bg-white text-black py-12 px-6 sm:px-12 max-w-7xl mx-auto selection:bg-black selection:text-white">
+    <div className="w-full bg-white text-black py-12 px-6 sm:px-12 max-w-7xl mx-auto selection:bg-black selection:text-white page-enter">
       <SeoHead
         title="Equipments — Camera, Lighting & Audio Rental Beirut | Chroma28 Studio"
         description="Rent cinema bodies, Sony G Master lenses, Aputure lighting, Shure SM7B microphones, and heavy-duty grip gear in Antelias, Beirut, Lebanon."

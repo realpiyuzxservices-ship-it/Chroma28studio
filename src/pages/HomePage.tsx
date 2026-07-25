@@ -70,7 +70,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
   ];
 
   return (
-    <div className="w-full bg-white text-black selection:bg-black selection:text-white">
+    <div className="w-full bg-white text-black selection:bg-black selection:text-white page-enter">
       <SeoHead
         title="Chroma28 Studio — Studio Rental & Production Studio Beirut, Lebanon"
         description="Chroma28 Studio is a premier production studio rental, white cyclorama, podcast studio, kitchen studio, equipment rental and video production in Antelias, Beirut, Lebanon."
@@ -160,58 +160,45 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
       </section>
 
-      {/* ---------- LOGO & RECOGNITION MARQUEE STRIP (SLIDE IN FROM LEFT) ---------- */}
-      <ScrollReveal variant="slideRight" className="w-full">
-        <section className="logo-section py-8 border-b border-black/15 bg-neutral-100 overflow-hidden font-opensans" aria-label="Trusted by agencies and brands">
-          <div className="text-center text-[14px] font-bold uppercase tracking-widest text-black/60 mb-6 font-opensans">
-            Chroma28 Studio &nbsp;·&nbsp; Trusted by Agencies, Brands &amp; Production Companies
-          </div>
+      {/* ---------- DARK BRAND MARQUEE STRIP (Chroma28 Style) ---------- */}
+      <section
+        className="marquee-dark-strip py-7 border-b border-white/5 font-opensans"
+        aria-label="Trusted by agencies and brands"
+      >
+        {/* Top label */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-white/30 mb-5 font-opensans"
+        >
+          Chroma28 Studio &nbsp;·&nbsp; Trusted by Agencies, Brands &amp; Production Companies
+        </motion.div>
 
-          <div className="overflow-hidden relative font-opensans select-none">
-            <div className="animate-marquee flex items-center gap-12 whitespace-nowrap text-[14px] font-bold uppercase text-black/80 font-opensans pr-12">
-              {/* Set 1 */}
-              <span className="flex items-center gap-2">Leo Burnett Beirut</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Maison Beirut Fashion</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Gourmet Culinary Group</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Beirut Business Journal</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Titan Athletics</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Pure Botanicals Skincare</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Impact BBDO</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Urban Eatery Antelias</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Memac Ogilvy</span>
-              <span className="text-black/30">•</span>
-
-              {/* Set 2 */}
-              <span className="flex items-center gap-2">Leo Burnett Beirut</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Maison Beirut Fashion</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Gourmet Culinary Group</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Beirut Business Journal</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Titan Athletics</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Pure Botanicals Skincare</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Impact BBDO</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Urban Eatery Antelias</span>
-              <span className="text-black/30">•</span>
-              <span className="flex items-center gap-2">Memac Ogilvy</span>
-              <span className="text-black/30">•</span>
-            </div>
+        <div className="marquee-fade-edges overflow-hidden relative font-opensans select-none">
+          <div className="animate-marquee flex items-center gap-0 whitespace-nowrap">
+            {[
+              'Studio Rental', 'Equipment Rental', 'Production', 'Podcasts',
+              'Branded Content', 'Cyclorama', 'Kitchen Studio', 'Post-Production',
+              'Studio Rental', 'Equipment Rental', 'Production', 'Podcasts',
+              'Branded Content', 'Cyclorama', 'Kitchen Studio', 'Post-Production',
+            ].map((item, i) => (
+              <React.Fragment key={i}>
+                <span className="font-barlow text-[1.35rem] sm:text-2xl font-black uppercase text-white tracking-wide px-6">
+                  {item}
+                </span>
+                <span
+                  className="text-[#e040fb] font-black text-xl select-none flex-shrink-0"
+                  style={{ textShadow: '0 0 12px rgba(224,64,251,0.9), 0 0 28px rgba(224,64,251,0.5)' }}
+                >
+                  ✦
+                </span>
+              </React.Fragment>
+            ))}
           </div>
-        </section>
-      </ScrollReveal>
+        </div>
+      </section>
 
       {/* ---------- THIRD SECTION: ARCHITECTURAL STATEMENT WITH ITALIC BLUR TEXT (SLIDE IN FROM RIGHT) ---------- */}
       <ScrollReveal variant="slideLeft" className="w-full">
@@ -326,113 +313,97 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch">
             
             {/* Card 01: Cyclorama Infinity Wall */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-neutral-100 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between"
-            >
-              <div onClick={() => onNavigate('/spaces/cyclorama')}>
-                <img
-                  src={cycloramaImg}
-                  alt="Cyclorama Infinity Wall Studio"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
-                
-                <div className="relative z-10 p-6 text-white mt-auto mb-12">
-                  <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
-                    Cyclorama Infinity Wall
-                  </h3>
-                </div>
-
-                {/* Bottom Dark CTA Bar */}
-                <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
-                  <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
-                  <span className="text-sm font-sans font-normal">&rarr;</span>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper aspect-[3/4] w-full">
+                <div className="glow-card-inner aspect-[3/4] w-full group cursor-pointer relative bg-neutral-100 shadow-md flex flex-col justify-between"
+                  onClick={() => onNavigate('/spaces/cyclorama')}>
+                  <img
+                    src={cycloramaImg}
+                    alt="Cyclorama Infinity Wall Studio"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                  <div className="relative z-10 p-6 text-white mt-auto mb-12">
+                    <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
+                      Cyclorama Infinity Wall
+                    </h3>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
+                    <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
+                    <span className="text-sm font-sans font-normal">&rarr;</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* Card 02: The Black Side */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-neutral-900 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between"
-            >
-              <div onClick={() => onNavigate('/spaces/black-side')}>
-                <img
-                  src={blackSideImg}
-                  alt="The Black Side Stage"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
-                
-                <div className="relative z-10 p-6 text-white mt-auto mb-12">
-                  <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
-                    The Black Side
-                  </h3>
-                </div>
-
-                {/* Bottom Dark CTA Bar */}
-                <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
-                  <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
-                  <span className="text-sm font-sans font-normal">&rarr;</span>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper aspect-[3/4] w-full">
+                <div className="glow-card-inner aspect-[3/4] w-full group cursor-pointer relative bg-neutral-900 shadow-md flex flex-col justify-between"
+                  onClick={() => onNavigate('/spaces/black-side')}>
+                  <img
+                    src={blackSideImg}
+                    alt="The Black Side Stage"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                  <div className="relative z-10 p-6 text-white mt-auto mb-12">
+                    <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
+                      The Black Side
+                    </h3>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
+                    <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
+                    <span className="text-sm font-sans font-normal">&rarr;</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* Card 03: Cook & Shoot Kitchen Studio */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-neutral-100 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between"
-            >
-              <div onClick={() => onNavigate('/spaces/kitchen')}>
-                <img
-                  src={chefKitchenImg}
-                  alt="Cook & Shoot Kitchen Studio"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
-                
-                <div className="relative z-10 p-6 text-white mt-auto mb-12">
-                  <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
-                    Cook &amp; Shoot Kitchen Studio
-                  </h3>
-                </div>
-
-                {/* Bottom Dark CTA Bar */}
-                <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
-                  <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
-                  <span className="text-sm font-sans font-normal">&rarr;</span>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper aspect-[3/4] w-full">
+                <div className="glow-card-inner aspect-[3/4] w-full group cursor-pointer relative bg-neutral-100 shadow-md flex flex-col justify-between"
+                  onClick={() => onNavigate('/spaces/kitchen')}>
+                  <img
+                    src={chefKitchenImg}
+                    alt="Cook & Shoot Kitchen Studio"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                  <div className="relative z-10 p-6 text-white mt-auto mb-12">
+                    <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
+                      Cook &amp; Shoot Kitchen Studio
+                    </h3>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
+                    <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
+                    <span className="text-sm font-sans font-normal">&rarr;</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* Card 04: Aqua Shooting Space */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-neutral-100 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between"
-            >
-              <div onClick={() => onNavigate('/spaces/aqua')}>
-                <img
-                  src={aquaImg}
-                  alt="Aqua Shooting Space"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
-                
-                <div className="relative z-10 p-6 text-white mt-auto mb-12">
-                  <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
-                    Aqua Shooting Space
-                  </h3>
-                </div>
-
-                {/* Bottom Dark CTA Bar */}
-                <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
-                  <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
-                  <span className="text-sm font-sans font-normal">&rarr;</span>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper aspect-[3/4] w-full">
+                <div className="glow-card-inner aspect-[3/4] w-full group cursor-pointer relative bg-neutral-100 shadow-md flex flex-col justify-between"
+                  onClick={() => onNavigate('/spaces/aqua')}>
+                  <img
+                    src={aquaImg}
+                    alt="Aqua Shooting Space"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 absolute inset-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                  <div className="relative z-10 p-6 text-white mt-auto mb-12">
+                    <h3 className="text-xl sm:text-2xl font-bold font-geist tracking-tight text-white leading-tight">
+                      Aqua Shooting Space
+                    </h3>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 z-20 bg-black/95 px-4 sm:px-5 py-3.5 flex items-center justify-between text-white text-[11px] sm:text-xs font-normal font-sans uppercase tracking-wider group-hover:bg-black transition-colors border-t border-white/10">
+                    <span className="font-sans font-normal">EXPLORE SPACES &amp; RESERVE STAGE</span>
+                    <span className="text-sm font-sans font-normal">&rarr;</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
@@ -462,103 +433,88 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             
             {/* Card 1: Strategy / Agencies & Brands */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative min-h-[380px] rounded-3xl p-7 flex flex-col justify-between overflow-hidden bg-neutral-950 text-white shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-800"
-            >
-              <div onClick={() => onNavigate('/who-its-for')}>
-                <img
-                  src={agencyTeamNew}
-                  alt="Strategy & Agency Team"
-                  className="absolute inset-x-0 bottom-0 top-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Pill Tag */}
-                <div className="relative z-10 self-start opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <span className="px-3.5 py-1.5 rounded-full text-[11px] font-medium font-opensans bg-black/40 border border-white/20 text-white/90 backdrop-blur-md">
-                    Strategy
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 pt-16 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <div className="w-2.5 h-2.5 rounded-full bg-orange-500 mb-3"></div>
-                  <h3 className="text-xl font-bold font-geist tracking-tight leading-snug mb-2 text-white">
-                    Bold strategies that shape identities
-                  </h3>
-                  <p className="text-xs text-neutral-300 font-opensans leading-relaxed">
-                    We craft concepts that define unique brands and strengthen their presence.
-                  </p>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper min-h-[380px] w-full">
+                <div className="glow-card-inner min-h-[380px] w-full group cursor-pointer relative p-7 flex flex-col justify-between bg-neutral-950 text-white"
+                  onClick={() => onNavigate('/who-its-for')}>
+                  <img
+                    src={agencyTeamNew}
+                    alt="Strategy & Agency Team"
+                    className="absolute inset-x-0 bottom-0 top-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10 self-start opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-medium font-opensans bg-black/40 border border-white/20 text-white/90 backdrop-blur-md">
+                      Strategy
+                    </span>
+                  </div>
+                  <div className="relative z-10 pt-16 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <div className="w-2.5 h-2.5 rounded-full bg-orange-500 mb-3"></div>
+                    <h3 className="text-xl font-bold font-geist tracking-tight leading-snug mb-2 text-white">
+                      Bold strategies that shape identities
+                    </h3>
+                    <p className="text-xs text-neutral-300 font-opensans leading-relaxed">
+                      We craft concepts that define unique brands and strengthen their presence.
+                    </p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* Card 2: Growth / Culinary & FMCG */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative min-h-[380px] rounded-3xl p-7 flex flex-col justify-between overflow-hidden bg-neutral-950 text-white shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-800"
-            >
-              <div onClick={() => onNavigate('/spaces/kitchen')}>
-                <img
-                  src={kitchenShootNew}
-                  alt="Culinary Chef Studio"
-                  className="absolute inset-x-0 bottom-0 top-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Pill Tag */}
-                <div className="relative z-10 self-start opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <span className="px-3.5 py-1.5 rounded-full text-[11px] font-medium font-opensans bg-black/40 border border-white/20 text-white/90 backdrop-blur-md">
-                    Growth
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 pt-16 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <div className="w-2.5 h-2.5 rounded-full bg-orange-500 mb-3"></div>
-                  <h3 className="text-xl font-bold font-geist tracking-tight leading-snug mb-2 text-white">
-                    Driving measurable growth through impact
-                  </h3>
-                  <p className="text-xs text-neutral-300 font-opensans leading-relaxed">
-                    Focused on reach, engagement, and real results — not empty noise.
-                  </p>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper min-h-[380px] w-full">
+                <div className="glow-card-inner min-h-[380px] w-full group cursor-pointer relative p-7 flex flex-col justify-between bg-neutral-950 text-white"
+                  onClick={() => onNavigate('/spaces/kitchen')}>
+                  <img
+                    src={kitchenShootNew}
+                    alt="Culinary Chef Studio"
+                    className="absolute inset-x-0 bottom-0 top-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10 self-start opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-medium font-opensans bg-black/40 border border-white/20 text-white/90 backdrop-blur-md">
+                      Growth
+                    </span>
+                  </div>
+                  <div className="relative z-10 pt-16 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <div className="w-2.5 h-2.5 rounded-full bg-orange-500 mb-3"></div>
+                    <h3 className="text-xl font-bold font-geist tracking-tight leading-snug mb-2 text-white">
+                      Driving measurable growth through impact
+                    </h3>
+                    <p className="text-xs text-neutral-300 font-opensans leading-relaxed">
+                      Focused on reach, engagement, and real results — not empty noise.
+                    </p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* Card 3: Creative / Podcasters & Creators */}
-            <ScrollReveal
-              asChild
-              variant="slideUp"
-              className="group cursor-pointer relative min-h-[380px] rounded-3xl p-7 flex flex-col justify-between overflow-hidden bg-neutral-950 text-white shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-800"
-            >
-              <div onClick={() => onNavigate('/spaces/podcast-room-1')}>
-                <img
-                  src={podcasterNew}
-                  alt="Podcast Studio Room"
-                  className="absolute inset-x-0 bottom-0 top-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Pill Tag */}
-                <div className="relative z-10 self-start opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <span className="px-3.5 py-1.5 rounded-full text-[11px] font-medium font-opensans bg-black/40 border border-white/20 text-white/90 backdrop-blur-md">
-                    Creative
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 pt-16 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <div className="w-2.5 h-2.5 rounded-full bg-orange-500 mb-3"></div>
-                  <h3 className="text-xl font-bold font-geist tracking-tight leading-snug mb-2 text-white">
-                    Creative processes with rapid delivery
-                  </h3>
-                  <p className="text-xs text-neutral-300 font-opensans leading-relaxed">
-                    Ideas turn into results fast, without losing quality or relevance.
-                  </p>
+            <ScrollReveal asChild variant="slideUp">
+              <div className="glow-card-wrapper min-h-[380px] w-full">
+                <div className="glow-card-inner min-h-[380px] w-full group cursor-pointer relative p-7 flex flex-col justify-between bg-neutral-950 text-white"
+                  onClick={() => onNavigate('/spaces/podcast-room-1')}>
+                  <img
+                    src={podcasterNew}
+                    alt="Podcast Studio Room"
+                    className="absolute inset-x-0 bottom-0 top-0 w-full h-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10 self-start opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <span className="px-3.5 py-1.5 rounded-full text-[11px] font-medium font-opensans bg-black/40 border border-white/20 text-white/90 backdrop-blur-md">
+                      Creative
+                    </span>
+                  </div>
+                  <div className="relative z-10 pt-16 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <div className="w-2.5 h-2.5 rounded-full bg-orange-500 mb-3"></div>
+                    <h3 className="text-xl font-bold font-geist tracking-tight leading-snug mb-2 text-white">
+                      Creative processes with rapid delivery
+                    </h3>
+                    <p className="text-xs text-neutral-300 font-opensans leading-relaxed">
+                      Ideas turn into results fast, without losing quality or relevance.
+                    </p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>

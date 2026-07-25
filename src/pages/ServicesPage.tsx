@@ -10,7 +10,7 @@ interface ServicesPageProps {
 
 export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenBooking }) => {
   return (
-    <div className="w-full bg-white text-black py-12 px-6 sm:px-12 max-w-7xl mx-auto selection:bg-black selection:text-white">
+    <div className="w-full bg-white text-black py-12 px-6 sm:px-12 max-w-7xl mx-auto selection:bg-black selection:text-white page-enter">
       <SeoHead
         title="Services — Studio Rental & Commercial Production Beirut | Chroma28 Studio"
         description="Full-service video production, studio rental, commercial photography, equipment rental, and social media agency in Antelias, Beirut, Lebanon."

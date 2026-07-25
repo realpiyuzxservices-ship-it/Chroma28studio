@@ -11,7 +11,7 @@ interface StudiosPageProps {
 
 export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate, onOpenBookingWithSlug }) => {
   return (
-    <div className="w-full bg-white text-black font-sans py-12 sm:py-16">
+    <div className="w-full bg-white text-black font-sans py-12 sm:py-16 page-enter">
       <SeoHead
         title="Studios & Sets — Chroma28 Studio Rental Beirut"
         description="Explore 10 purpose-built production sets and studio spaces in Antelias, Beirut. White cyclorama, podcast suite, commercial kitchen, blackout box, and aqua set."

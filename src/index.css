@@ -282,4 +282,140 @@
 }
 
 
+/* ─── Animated Gradient Glow Card ─────────────────────────────────────────── */
+@keyframes glowRotate {
+  0%   { --glow-angle: 0deg; }
+  100% { --glow-angle: 360deg; }
+}
+
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.glow-card-wrapper {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    #a855f7 0%,
+    #ec4899 25%,
+    #06b6d4 50%,
+    #a855f7 75%,
+    #a855f7 100%
+  );
+  animation: glowRotate 4s linear infinite;
+  box-shadow:
+    0 0 18px 2px rgba(168, 85, 247, 0.35),
+    0 0 40px 6px rgba(236, 72, 153, 0.18);
+  transition: box-shadow 0.4s ease;
+}
+
+.glow-card-wrapper:hover {
+  box-shadow:
+    0 0 28px 6px rgba(168, 85, 247, 0.55),
+    0 0 60px 12px rgba(236, 72, 153, 0.3),
+    0 0 90px 20px rgba(6, 182, 212, 0.15);
+}
+
+.glow-card-inner {
+  border-radius: calc(1rem - 2px);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ─── Dark Marquee Strip ────────────────────────────────────────────────────── */
+.marquee-dark-strip {
+  background: #09090b;
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee-dark-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% -10%, rgba(168, 85, 247, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 110%, rgba(236, 72, 153, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 110%, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.marquee-dark-strip > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Fade edges on marquee */
+.marquee-dark-strip .marquee-fade-edges {
+  position: relative;
+}
+
+.marquee-dark-strip .marquee-fade-edges::before,
+.marquee-dark-strip .marquee-fade-edges::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marquee-dark-strip .marquee-fade-edges::before {
+  left: 0;
+  background: linear-gradient(to right, #09090b, transparent);
+}
+
+.marquee-dark-strip .marquee-fade-edges::after {
+  right: 0;
+  background: linear-gradient(to left, #09090b, transparent);
+}
+
+/* ─── Page Entry Fade-In ───────────────────────────────────────────────────── */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: pageEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Process Timeline ─────────────────────────────────────────────────────── */
+.process-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(200,71,71,0.4) 10%, rgba(200,71,71,0.4) 90%, transparent 100%);
+}
+
+.process-step-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(200, 71, 71, 0.6);
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  color: #c84747;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 16px 4px rgba(200, 71, 71, 0.25);
+  flex-shrink: 0;
+}
 

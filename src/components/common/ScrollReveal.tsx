@@ -57,7 +57,7 @@ export const StaggerContainer: React.FC<{
   className?: string;
   staggerChildren?: number;
   delayChildren?: number;
-}> = ({ children, className, staggerChildren = 0.12, delayChildren = 0 }) => (
+}> = ({ children, className, staggerChildren = 0.15, delayChildren = 0 }) => (
   <motion.div
     className={className}
     initial="hidden"
@@ -97,13 +97,13 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   variant = 'foldIn',
   delay = 0,
-  duration = 0.9,
+  duration = 1.1,
   className,
   asChild = false,
   amount = 0.1,
   once = true,
 }) => {
-  const ease = [0.16, 1, 0.3, 1];
+  const ease = [0.22, 1, 0.36, 1];
 
   if (asChild) {
     // Designed for use inside StaggerContainer — inherits parent stagger

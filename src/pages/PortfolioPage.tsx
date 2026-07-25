@@ -17,7 +17,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onOpenBooking }) =
     : PORTFOLIO_ITEMS.filter((item) => item.category === activeCategory);
 
   return (
-    <div className="w-full bg-white text-black py-12 px-6 sm:px-12 max-w-7xl mx-auto selection:bg-black selection:text-white">
+    <div className="w-full bg-white text-black py-12 px-6 sm:px-12 max-w-7xl mx-auto selection:bg-black selection:text-white page-enter">
       <SeoHead
         title="Our Work & Portfolio — Chroma28 Studio Beirut"
         description="Explore recent video productions, commercial photography, recipe videos, and 4K podcasts produced at Chroma28 Studio in Antelias, Beirut."

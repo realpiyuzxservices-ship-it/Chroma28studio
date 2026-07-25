@@ -94,7 +94,7 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans flex flex-col justify-between selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-transparent text-white font-sans flex flex-col justify-between selection:bg-[#e040fb] selection:text-white page-enter">
       <div>
         <Navbar
           currentPath={currentPath}

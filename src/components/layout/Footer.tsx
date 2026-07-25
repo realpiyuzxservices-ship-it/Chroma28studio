@@ -1,6 +1,6 @@
 import React from 'react';
 import { Instagram, MapPin, Phone, Mail, MessageCircle, ArrowUpRight } from 'lucide-react';
-import logoImg from '@/assets/images/chroma28_logo_1784881730357.jpg';
+import logoImg from '@/assets/images/logo_new.jpg';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               <img
                 src={logoImg}
                 alt="Chroma28 Studio Logo"
-                className="w-9 h-9 rounded-full border border-neutral-700 object-contain bg-white"
+                className="w-10 h-10 rounded-full border border-neutral-700 object-cover"
               />
               <h3 className="text-xl font-extrabold tracking-tight uppercase text-white">
                 CHROMA28 <span className="font-medium text-neutral-400 text-sm">STUDIO</span>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
 import { STUDIO_SPACES } from '@/data/spaces';
-import { SeoHead, UiverseButton, SlideUp, SlideDown, FadeIn, StaggerContainer, ScrollReveal, ZoomIn, SplitText } from '@/components';
+import { SeoHead, UiverseButton, SlideDown, FadeIn, StaggerContainer, ScrollReveal, ZoomIn } from '@/components';
 
 interface StudiosPageProps {
   onNavigate: (path: string) => void;
@@ -11,112 +11,121 @@ interface StudiosPageProps {
 
 export const StudiosPage: React.FC<StudiosPageProps> = ({ onNavigate, onOpenBookingWithSlug }) => {
   return (
-    <div className="w-full bg-white text-black font-sans py-12 sm:py-16 page-enter">
+    <div className="w-full bg-transparent text-white font-sans py-12 sm:py-16 page-enter max-w-7xl mx-auto px-6 sm:px-12">
       <SeoHead
         title="Studios & Sets — Chroma28 Studio Rental Beirut"
         description="Explore 10 purpose-built production sets and studio spaces in Antelias, Beirut. White cyclorama, podcast suite, commercial kitchen, blackout box, and aqua set."
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12">
-        {/* Page Header */}
-        <div className="mb-12 border-b border-black/15 pb-8">
-          <SlideDown delay={0}>
-            <span className="font-barlow text-sm font-bold uppercase tracking-widest text-[#c84747] block mb-2">
-              10 Specialized Sets
-            </span>
-          </SlideDown>
-          <SplitText
-            text="Studios & Set Architecture"
-            tag="h1"
-            splitType="chars"
-            delay={25}
-            duration={0.8}
-            textAlign="left"
-            className="font-barlow text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-black mb-4"
-          />
-          <FadeIn delay={0.2}>
-            <p className="font-barlow text-lg sm:text-xl text-neutral-600 max-w-2xl uppercase tracking-wide">
-              Designed for commercial filming, fashion editorials, brand campaigns, and broadcast productions in Antelias, Beirut.
-            </p>
-          </FadeIn>
-        </div>
+      {/* ── Page Header Redesign (Reference Style) ── */}
+      <div className="mb-16 border-b border-white/10 pb-12">
+        <SlideDown delay={0}>
+          <span className="font-barlow text-sm font-bold uppercase tracking-[0.25em] text-[#e040fb] block mb-3">
+            CHROMA28 STUDIO / STAGE SELECTION
+          </span>
+        </SlideDown>
 
-        {/* Studios Grid */}
-        <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          staggerChildren={0.1}
-          delayChildren={0.05}
-        >
-          {STUDIO_SPACES.map((space) => (
-            <ScrollReveal
-              key={space.id}
-              asChild
-              variant="slideUp"
-              className="group border border-black/15 bg-neutral-50 hover:border-black transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
+        <h1 className="font-barlow text-4xl sm:text-7xl font-black uppercase tracking-tight text-white leading-[0.9] mb-6 max-w-5xl">
+          TEN SPECIALIZED{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 font-extrabold">
+            PRODUCTION STAGES
+          </span>{' '}
+          BUILT FOR{' '}
+          <span className="inline-block px-6 py-2 rounded-full border-2 border-purple-500 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse">
+            FILMMAKERS
+          </span>
+        </h1>
+
+        <FadeIn delay={0.25}>
+          <p className="font-barlow text-lg sm:text-xl text-neutral-400 max-w-3xl uppercase tracking-wide leading-relaxed">
+            Acoustically isolated stages, drive-in cargo docks, heavy 3-phase industrial power, and dedicated client lounges in Antelias, Beirut.
+          </p>
+        </FadeIn>
+      </div>
+
+      {/* ── Studios Grid with Conic Glow Wrappers ── */}
+      <StaggerContainer
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"
+        staggerChildren={0.1}
+        delayChildren={0.05}
+      >
+        {STUDIO_SPACES.map((space) => (
+          <ScrollReveal
+            key={space.id}
+            asChild
+            variant="slideUp"
+          >
+            <div className="glow-card-wrapper w-full h-full">
+              <div className="glow-card-inner group bg-neutral-950/80 border border-white/5 flex flex-col justify-between h-full transition-all duration-300">
                 <div>
+                  
                   {/* Image with zoom on hover */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-neutral-200">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-neutral-900">
                     <img
                       src={space.heroImageUrl}
                       alt={space.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
-                    {/* Dark overlay on hover */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-500" />
-                    <div className="absolute top-3 right-3 bg-black text-white text-xs font-barlow font-bold px-3 py-1 uppercase tracking-wider">
+                    {/* Glass Overlay Tag */}
+                    <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-full border border-white/15">
                       {space.primaryKeyword}
                     </div>
+                    {/* Dark gradient fade-in overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-85" />
                   </div>
 
+                  {/* Card Content */}
                   <div className="p-6">
-                    <div className="flex items-center gap-2 text-xs font-barlow font-bold text-neutral-500 uppercase tracking-widest mb-2">
+                    <div className="flex items-center gap-2.5 text-[10px] font-mono font-semibold text-[#e040fb] uppercase tracking-widest mb-2">
                       <span>{space.dimensions}</span>
-                      <span>•</span>
+                      <span className="text-neutral-600">•</span>
                       <span>{space.powerSupply}</span>
                     </div>
 
-                    <h3 className="font-barlow text-2xl font-bold uppercase tracking-wide text-black mb-3 group-hover:text-[#c84747] transition-colors">
+                    <h3 className="font-barlow text-2xl font-bold uppercase tracking-wide text-white mb-3 group-hover:text-pink-400 transition-colors">
                       {space.name}
                     </h3>
 
-                    <p className="text-sm text-neutral-600 line-clamp-2 font-sans mb-4">
+                    <p className="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed mb-5 line-clamp-3">
                       {space.shortDescription}
                     </p>
 
-                    <div className="flex flex-wrap gap-1.5 mb-6">
+                    {/* Features capsule list */}
+                    <div className="flex flex-wrap gap-1.5 mb-2">
                       {space.features.slice(0, 3).map((feat, idx) => (
                         <span
                           key={idx}
-                          className="text-[11px] font-barlow font-medium uppercase tracking-wider bg-white border border-black/10 px-2.5 py-1 text-neutral-700"
+                          className="text-[9px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 px-2.5 py-1 text-neutral-300 rounded-full"
                         >
                           {feat}
                         </span>
                       ))}
                     </div>
                   </div>
+
                 </div>
 
-                <div className="px-6 pb-6 pt-0 border-t border-black/10 flex items-center justify-between pt-4">
+                {/* Card Action Footer */}
+                <div className="px-6 pb-6 pt-4 border-t border-white/5 flex items-center justify-between">
                   <button
                     onClick={() => onNavigate(`/spaces/${space.slug}`)}
-                    className="font-barlow text-sm font-bold uppercase tracking-wider text-black hover:text-[#c84747] transition-colors"
+                    className="font-barlow text-xs font-bold uppercase tracking-widest text-neutral-300 hover:text-white transition-colors cursor-pointer border-b border-transparent hover:border-white pb-0.5"
                   >
-                    View Details
+                    View Stage Details
                   </button>
 
                   <UiverseButton
-                    text="Book"
-                    textSize="text-base"
+                    text="Book Stage"
+                    textSize="text-sm"
                     onClick={() => onOpenBookingWithSlug(space.slug)}
                   />
                 </div>
+
               </div>
-            </ScrollReveal>
-          ))}
-        </StaggerContainer>
-      </div>
+            </div>
+          </ScrollReveal>
+        ))}
+      </StaggerContainer>
     </div>
   );
 };

@@ -11,12 +11,29 @@
   }
 
   html, body {
-    background-color: #ffffff !important;
-    color: #000000 !important;
+    background-color: #030308 !important;
+    background-image: 
+      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(99, 102, 241, 0.18) 0%, transparent 100%),
+      radial-gradient(ellipse 50% 50% at 15% 35%, rgba(236, 72, 153, 0.09) 0%, transparent 100%),
+      radial-gradient(ellipse 60% 60% at 85% 75%, rgba(6, 182, 212, 0.08) 0%, transparent 100%) !important;
+    background-attachment: fixed !important;
+    color: #ffffff !important;
     font-family: var(--font-sans) !important;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-repeat: repeat;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Geist font specification class */
@@ -418,4 +435,64 @@
   box-shadow: 0 0 16px 4px rgba(200, 71, 71, 0.25);
   flex-shrink: 0;
 }
+
+/* ─── Global Dark Theme Overrides ────────────────────────────────────────── */
+.bg-white {
+  background-color: transparent !important;
+}
+.bg-neutral-50 {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(8px);
+}
+.bg-neutral-100 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(8px);
+}
+.text-black {
+  color: #ffffff !important;
+}
+.text-neutral-600 {
+  color: #a3a3a3 !important;
+}
+.text-neutral-700 {
+  color: #d4d4d4 !important;
+}
+.text-neutral-800 {
+  color: #e5e5e5 !important;
+}
+.border-black\/15, .border-black\/10, .border-black {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+.border-b-2.border-black {
+  border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+}
+.btn-solid {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+.btn-solid:hover {
+  background-color: #e5e5e5 !important;
+  color: #000000 !important;
+}
+.btn-outline {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+.btn-outline:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.logo-section {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+.card-glass {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.card-glass:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
 

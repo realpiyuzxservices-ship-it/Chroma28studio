@@ -70,7 +70,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
   ];
 
   return (
-    <div className="w-full bg-white text-black selection:bg-black selection:text-white page-enter">
+    <div className="w-full bg-transparent text-white selection:bg-[#e040fb] selection:text-white page-enter">
       <SeoHead
         title="Chroma28 Studio — Studio Rental & Production Studio Beirut, Lebanon"
         description="Chroma28 Studio is a premier production studio rental, white cyclorama, podcast studio, kitchen studio, equipment rental and video production in Antelias, Beirut, Lebanon."
@@ -81,7 +81,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
       />
 
       {/* ---------- HERO SECTION (Left-aligned scaling typography & full-ratio marquee at bottom) ---------- */}
-      <section className="relative w-full bg-white text-black overflow-hidden pt-8 sm:pt-14 pb-0 border-b border-black/15 min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] flex flex-col justify-between">
+      <section className="relative w-full bg-transparent text-white overflow-hidden pt-8 sm:pt-14 pb-0 border-b border-white/10 min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] flex flex-col justify-between">
         
         {/* Left-Aligned Hero Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-8 text-left flex flex-col items-start justify-center my-auto py-6 sm:py-10 w-full relative z-10">
@@ -230,27 +230,27 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
       </ScrollReveal>
 
       {/* ---------- EDITORIAL "OUR PHILOSOPHY" SECTION (SLIDE IN FROM LEFT) ---------- */}
-      <ScrollReveal variant="slideRight" className="w-full bg-[#E5E3DE]">
-        <section className="w-full text-[#111111] py-20 sm:py-28 lg:py-32 px-6 sm:px-12 border-b border-black/15 font-geist">
+      <ScrollReveal variant="slideRight" className="w-full bg-white/5 backdrop-blur-md">
+        <section className="w-full text-white py-20 sm:py-28 lg:py-32 px-6 sm:px-12 border-b border-white/10 font-geist">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column (7 Columns) */}
             <div className="lg:col-span-7 flex flex-col justify-between h-full">
               <div>
                 {/* Eyebrow */}
-                <span className="text-xs font-bold tracking-[0.2em] text-[#111111] uppercase mb-4 block">
+                <span className="text-xs font-bold tracking-[0.2em] text-[#e040fb] uppercase mb-4 block">
                   PHILOSOPHY
                 </span>
 
                 {/* Statement Headline */}
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.45rem] font-bold tracking-tight text-[#111111] leading-[1.18] font-geist mb-10 sm:mb-14 max-w-2xl">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.45rem] font-bold tracking-tight text-white leading-[1.18] font-geist mb-10 sm:mb-14 max-w-2xl">
                   Every project is shaped through proportion, light, texture, and spatial balance. We believe great design should feel natural over time, creating environments that are both functional and emotionally connected to everyday life
                 </h2>
               </div>
 
               {/* Bottom Left: Image slides right smoothly and lazily next to text */}
               <div className="flex flex-col sm:flex-row items-start gap-6 lg:gap-8 mt-6 lg:mt-8">
-                <ScrollReveal variant="slideRight" duration={1.2} className="w-full sm:w-60 md:w-64 aspect-[4/3] shrink-0 relative overflow-hidden bg-white/20 border border-[#111111]/15 shadow-sm">
+                <ScrollReveal variant="slideRight" duration={1.2} className="w-full sm:w-60 md:w-64 aspect-[4/3] shrink-0 relative overflow-hidden bg-white/25 border border-white/10 shadow-sm">
                   <img
                     src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
                     alt="Architectural window light and grid shadow on white sofa"
@@ -259,7 +259,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
                   />
                 </ScrollReveal>
                 <div className="flex-1">
-                  <p className="text-sm sm:text-base text-[#4A4945] leading-relaxed font-normal pt-1 max-w-sm font-sans">
+                  <p className="text-sm sm:text-base text-neutral-400 leading-relaxed font-normal pt-1 max-w-sm font-sans">
                     Every studio at Chroma28 is built to remove friction from production. Thoughtful layouts, professional cinema equipment, natural workflow, and flexible spaces let your team focus on creating instead of setting up.
                   </p>
                 </div>
@@ -268,7 +268,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
             {/* Right Column (5 Columns): Tall image slides left smoothly and lazily */}
             <div className="lg:col-span-5 relative w-full">
-              <ScrollReveal variant="slideLeft" duration={1.2} className="w-full aspect-[4/5] relative overflow-hidden bg-neutral-200 border border-[#111111]/15 shadow-md">
+              <ScrollReveal variant="slideLeft" duration={1.2} className="w-full aspect-[4/5] relative overflow-hidden bg-neutral-900 border border-white/10 shadow-md">
                 <img
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
                   alt="Chroma28 Modern Studio Architecture Antelias Beirut"
@@ -277,7 +277,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
                 />
 
                 {/* Floating Location Badge */}
-                <div className="absolute top-4 right-4 bg-[#111111]/90 text-white backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold tracking-widest uppercase">
+                <div className="absolute top-4 right-4 bg-black/85 text-white backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold tracking-widest uppercase">
                   Antelias • Beirut
                 </div>
               </ScrollReveal>
@@ -289,12 +289,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
       {/* ---------- STUDIO HIGHLIGHTS (SLIDE IN FROM RIGHT) ---------- */}
       <ScrollReveal variant="slideLeft" className="w-full">
-        <section id="studio-spaces" className="py-16 sm:py-20 lg:py-24 px-6 sm:px-12 max-w-7xl mx-auto font-geist bg-white border-b border-black/15">
+        <section id="studio-spaces" className="py-16 sm:py-20 lg:py-24 px-6 sm:px-12 max-w-7xl mx-auto font-geist bg-transparent border-b border-white/10">
           {/* Dual-Tone Headline & Top Right Action */}
           <div className="flex flex-col lg:flex-row lg:items-start justify-between mb-12 sm:mb-16 gap-8">
             <div className="max-w-3xl">
               <h2 className="text-3xl sm:text-5xl lg:text-[3.2rem] font-bold tracking-tight leading-[1.12] font-geist">
-                <span className="text-black">We build production–first digital stages to help category </span>
+                <span className="text-white">We build production–first digital stages to help category </span>
                 <span className="text-neutral-400 font-normal">leaders lead</span>
                 <br />
                 <span className="text-neutral-400 font-normal">their industries.</span>
